@@ -1,13 +1,40 @@
-// TODO: define addFavoriteBook(..) function
+console.log("hi");
+class Bookshelf {
+  constructor() {
+    this.favoriteBooks = [];
+  }
 
-// TODO: define printFavoriteBooks() function
+  addFavoriteBook(bookName) {
+    if (!bookName.includes("Great")) {
+      this.favoriteBooks.push(bookName);
+    }
+  }
 
-var favoriteBooks = [];
+  printFavoriteBooks() {
+    console.log(`Favorite Books: ${String(favoriteBooks.length)}`);
+    for (let bookName of favoriteBooks) {
+      console.log(bookName);
+    }
+  }
+}
 
-addFavoriteBook("A Song of Ice and Fire");
-addFavoriteBook("The Great Gatsby");
-addFavoriteBook("Crime & Punishment");
-addFavoriteBook("Great Expectations");
-addFavoriteBook("You Don't Know JS");
+function loadBooks(/* .. */) {
+  // TODO: call fakeAjax( .. );
+}
 
-// TODO: print out favorite books
+var BOOK_API = "https://some.url/api";
+
+// ***********************
+
+// NOTE: don't modify this function at all
+function fakeAjax(url, cb) {
+  setTimeout(function fakeLoadingDelay() {
+    cb([
+      "A Song of Ice and Fire",
+      "The Great Gatsby",
+      "Crime & Punishment",
+      "Great Expectations",
+      "You Don't Know JS",
+    ]);
+  }, 500);
+}

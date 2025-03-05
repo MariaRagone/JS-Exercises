@@ -1,4 +1,4 @@
-console.log("hi");
+console.log("Three Pillars");
 class Bookshelf {
   constructor() {
     this.favoriteBooks = [];
@@ -11,22 +11,26 @@ class Bookshelf {
   }
 
   printFavoriteBooks() {
-    console.log(`Favorite Books: ${String(favoriteBooks.length)}`);
-    for (let bookName of favoriteBooks) {
+    console.log(`Favorite Books: ${String(this.favoriteBooks.length)}`);
+    for (let bookName of this.favoriteBooks) {
       console.log(bookName);
     }
   }
 }
 
-function loadBooks(/* .. */) {
-  // TODO: call fakeAjax( .. );
+function loadBooks(theBookShelf) {
+  fakeAjax(BOOK_API, function onBooks(bookNames) {
+    for (let bookName of bookNames) {
+      theBookShelf.addFavoriteBook(bookName);
+    }
+    theBookShelf.printFavoriteBooks();
+  });
 }
 
 var BOOK_API = "https://some.url/api";
+var myBooks = new Bookshelf();
+loadBooks(myBooks);
 
-// ***********************
-
-// NOTE: don't modify this function at all
 function fakeAjax(url, cb) {
   setTimeout(function fakeLoadingDelay() {
     cb([

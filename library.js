@@ -1,3 +1,5 @@
+console.log("Library");
+
 const bookName = [
   "A Song of Ice and Fire",
   "The Great Gatsby",
